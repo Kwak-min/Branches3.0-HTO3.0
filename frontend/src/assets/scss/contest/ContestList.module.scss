@@ -1,0 +1,160 @@
+@use "../style" as *;
+
+.contest_list_container {
+  width: 100%;
+  padding: clamp(16px, 2vw, 32px);
+  position: relative;
+
+  /* ❌ 네온 CRT 그리드 배경 → 제거 */
+  /* @include background_set; */
+
+  /* ✅ 배경을 완전 검정으로 통일 */
+  background: #000 !important;
+
+  /* 전체 화면이 검정색으로 꽉 차도록 */
+  min-height: 100vh;
+  height: 100%;
+
+  .contest_title {
+    font-family: Orbitron;
+    font-size: clamp(1.8rem, 2.8vw, 3rem);
+    margin-bottom: 24px;
+    color: #8bf3ff;
+    text-shadow: 0 0 16px rgba(139,243,255,0.5);
+  }
+}
+
+
+/* 플로팅 Add 버튼 */
+.floating_add_button {
+  position: fixed;
+  bottom: clamp(26px, 4vw, 40px);
+  right: clamp(26px, 4vw, 40px);
+  padding: 14px 28px;
+
+  font-family: Orbitron;
+  font-size: clamp(0.9rem, 1.6vw, 1.2rem);
+  font-weight: 700;
+
+  color: #eaffff;
+  background: rgba(8,20,30,0.55);
+  border: 1.8px solid rgba(139,243,255,0.4);
+  border-radius: 14px;
+  backdrop-filter: blur(6px);
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+  z-index: 999;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 20px rgba(139,243,255,0.7);
+    border-color: rgba(139,243,255,0.8);
+  }
+}
+
+/* 탭 */
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+
+  .tab_button {
+    padding: 10px 18px;
+    border-radius: 12px;
+    background: rgba(8,20,30,0.45);
+    border: 1px solid rgba(139,243,255,0.25);
+    color: #dffbff;
+    font-family: Orbitron;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      background: rgba(139,243,255,0.2);
+      transform: translateY(-2px);
+    }
+  }
+
+  .active {
+    background: rgba(139,243,255,0.35);
+    box-shadow: 0 0 14px rgba(139,243,255,0.4);
+  }
+}
+
+/* 카드 그리드 */
+.card_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 20px;
+}
+
+/* 카드 디자인 */
+.contest_card {
+  background: rgba(8,20,30,0.35);
+  border: 1.5px solid rgba(139,243,255,0.25);
+  border-radius: 18px;
+  padding: 18px 20px;
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(18px);
+
+  position: relative;
+  overflow: hidden;
+
+  /* CRT scanline */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      rgba(255,255,255,0.05) 0px,
+      rgba(255,255,255,0.02) 1px,
+      transparent 2px
+    );
+    opacity: 0.15;
+  }
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 26px rgba(139,243,255,0.45);
+    border-color: rgba(139,243,255,0.55);
+  }
+
+  .card_header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .card_title {
+      font-family: Orbitron;
+      font-size: 1.4rem;
+      color: white;
+      flex: 1;
+    }
+
+    .go_icon {
+      color: #8bf3ff;
+      font-size: 1.5rem;
+      opacity: 0.8;
+    }
+  }
+
+  .card_info {
+    margin-top: 14px;
+    line-height: 1.4;
+
+    p {
+      font-size: 0.92rem;
+      color: #c8f8ff;
+      margin: 4px 0;
+    }
+  }
+}
+
+.no_contests {
+  font-family: Orbitron;
+  color: #7facb5;
+  text-align: center;
+  padding: 20px 0;
+}

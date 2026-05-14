@@ -1,0 +1,104 @@
+.detail_container {
+  display: flex;
+  align-items: flex-start;
+  gap: 25px;
+  width: 100%;
+  color: #ffffff;
+  font-family: var(--font-display);
+}
+
+/* Avatar */
+.avatar_container {
+  .MuiAvatar-root {
+    border: 2px solid #8bf3ff;
+    box-shadow: 0 0 18px #8bf3ff;
+  }
+}
+
+/* Text */
+.text_box {
+  color: #ffffff;
+  text-shadow: 0 0 4px rgba(139, 243, 255, 0.2);
+  
+
+  .name {
+    font-size: 1.8rem;
+    color: #8bf3ff;
+    margin-bottom: 4px;
+    text-shadow: 0 0 10px #8bf3ff;
+  }
+
+  .desc {
+    opacity: 0.9;
+    margin-bottom: 12px;
+  }
+
+  .machines,
+  .time,
+  .reward {
+    margin: 4px 0;
+    opacity: 0.95;
+  }
+}
+.text_box {
+  color: #ffffff;
+  text-shadow: 0 0 4px rgba(139, 243, 255, 0.2);
+
+  .name {
+    color: #8bf3ff;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 700;
+    margin-bottom: 6px;
+    text-shadow: 0 0 14px #8bf3ff;
+    
+    /* 강한 네온 애니메이션 추가 */
+    animation: neonPulse 2s infinite alternate;
+  }
+
+  .desc {
+    opacity: 0.9;
+    font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+
+  .machines,
+  .time,
+  .reward {
+    margin: 4px 0;
+    opacity: 0.95;
+  }
+}
+
+/* ==============================
+   NEON PULSE KEYFRAMES
+   ============================== */
+@keyframes neonPulse {
+  0% {
+    text-shadow:
+      0 0 6px #8bf3ff,
+      0 0 12px #8bf3ff,
+      0 0 18px #8bf3ff,
+      0 0 24px #8bf3ff,
+      0 0 30px #8bf3ff;
+    color: #8bf3ff;
+  }
+  50% {
+    text-shadow:
+      0 0 12px #8bf3ff,
+      0 0 18px #8bf3ff,
+      0 0 24px #8bf3ff,
+      0 0 30px #8bf3ff,
+      0 0 36px #8bf3ff;
+    color: #d0faff;
+  }
+  100% {
+    text-shadow:
+      0 0 6px #8bf3ff,
+      0 0 12px #8bf3ff,
+      0 0 18px #8bf3ff,
+      0 0 24px #8bf3ff,
+      0 0 30px #8bf3ff;
+    color: #8bf3ff;
+  }
+}

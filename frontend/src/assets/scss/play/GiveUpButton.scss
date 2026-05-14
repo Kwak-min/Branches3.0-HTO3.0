@@ -1,0 +1,52 @@
+/* From Uiverse.io by alexmaracinaru */
+.give-up-btn {
+  white-space: nowrap;
+  cursor: pointer;
+  font-weight: 700;
+  padding-left: 10px;
+  height: clamp(60px, 1vh, 80px);
+  padding-right: 10px;
+  border-radius: 24px;
+  background-color: transparent;
+  border: 2px solid var(--color-white);
+  display: flex;
+  align-items: center;
+  font-size: 21px;
+  color: white;
+  transition: all 0.3s ease-in-out;
+}
+
+.give-up-btn:hover {
+  transform: translateX(-2px);
+  border: 2px solid transparent;
+  background: var(--color-red-rosso);
+  filter: drop-shadow(0 0 10px var(--color-red-rosso));
+}
+
+.give-up-btn>svg {
+  color: white;
+  width: 34px;
+  margin-left: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.give-up-btn:hover svg {
+  transform: translateX(5px);
+}
+
+.give-up-btn:hover circle {
+  stroke: rgb(255, 255, 255);
+}
+
+.give-up-btn.disabled {
+  border: 2px solid #ccc;
+  color: #ccc;
+  cursor: not-allowed;
+  pointer-events: none;
+  filter: none;
+  opacity: 0.6;
+}
+
+.give-up-btn:active {
+  transform: scale(0.95);
+}

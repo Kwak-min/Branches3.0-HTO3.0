@@ -1,0 +1,262 @@
+@use 'sass:math';
+
+// Jinx x Cyberpunk settings
+$transition-duration: 0.3s;
+$pre-glitch-duration: 0.1s;
+$glitch-intensity: 25;
+
+@mixin paint-splash {
+  content: '';
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  right: -10%;
+  bottom: -10%;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 50, 120, 0.03) 0px,
+      rgba(255, 50, 120, 0.03) 1px,
+      transparent 1px,
+      transparent 4px
+    ),
+    radial-gradient(
+      circle at 30% 70%,
+      rgba(255, 50, 120, 0.15) 0%,
+      rgba(255, 50, 120, 0.08) 30%,
+      transparent 70%
+    ),
+    radial-gradient(
+      circle at 70% 30%,
+      rgba(0, 220, 255, 0.15) 0%,
+      rgba(0, 220, 255, 0.08) 30%,
+      transparent 70%
+    ),
+    radial-gradient(
+      circle at 65% 65%,
+      rgba(255, 90, 160, 0.12) 0%,
+      rgba(255, 90, 160, 0.06) 25%,
+      transparent 65%
+    ),
+    radial-gradient(
+      circle at 35% 35%,
+      rgba(0, 255, 255, 0.12) 0%,
+      rgba(0, 255, 255, 0.06) 25%,
+      transparent 65%
+    );
+  mix-blend-mode: screen;
+  animation: paint-shift 8s ease-in-out infinite,
+             paint-pulse 6s ease-in-out infinite;
+}
+
+@mixin chaotic-noise {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 2px,
+      rgba(255, 255, 255, 0.02) 3px,
+      transparent 3px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 40, 150, 0.05),
+      rgba(0, 220, 255, 0.05)
+    );
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  animation: chaotic-shift 6s linear infinite;
+}
+
+@mixin keyframes-glitch($name) {
+  @keyframes glitch-#{$name} {}
+}
+
+@mixin keyframes-preglitch($name) {
+  @keyframes preglitch-#{$name} {}
+}
+
+.glitch {
+  position: relative;
+  height: 100vh;
+  background: #000 no-repeat center;
+  background-size: cover;
+  overflow: hidden;
+
+  &::before {
+    @include paint-splash;
+    transform-origin: center;
+    transform: scale(1.1);
+  }
+
+  &::after {
+    @include chaotic-noise;
+    transform-origin: center;
+    transform: scale(1.1);
+  }
+
+  &.transitioning {
+    animation: glitch-main $transition-duration cubic-bezier(0.17, 0.95, 0.45, 1);
+    @include keyframes-glitch(main);
+
+    .channel {
+      animation: channel-shift $transition-duration cubic-bezier(0.15, 0.9, 0.4, 1);
+
+      &.active {
+        opacity: 0.25;
+        mix-blend-mode: exclusion;
+      }
+    }
+  }
+
+  &.preGlitch {
+    animation: preglitch-main $pre-glitch-duration cubic-bezier(0.4, 0.1, 0.3, 1);
+    @include keyframes-preglitch(main);
+
+    .channel {
+      animation: pre-channel-shift $pre-glitch-duration ease-in-out;
+      transition: opacity 0.15s ease-in-out;
+
+      &.active {
+        opacity: 0.35;
+      }
+    }
+
+    .r {
+      transform: translate(1.5px, -0.6px);
+      filter: blur(0.4px) brightness(1.1);
+      background-color: rgba(255, 40, 90, 0.15);
+    }
+
+    .g {
+      transform: translate(-1.2px, 0.4px);
+      filter: blur(0.4px) brightness(1.1);
+      background-color: rgba(30, 255, 90, 0.15);
+    }
+
+    .b {
+      transform: translate(0.6px, -0.3px);
+      filter: blur(0.4px) brightness(1.1);
+      background-color: rgba(50, 120, 255, 0.15);
+    }
+
+    .noise {
+      opacity: 0.02;
+      animation: pre-noise 0.35s steps(5) infinite;
+      mix-blend-mode: overlay;
+    }
+  }
+
+  .channel {
+    position: absolute;
+    inset: -5%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    mix-blend-mode: screen;
+
+    &.active {
+      opacity: 0.35;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent 0px,
+        transparent 2px,
+        rgba(255, 255, 255, 0.02) 2px,
+        transparent 4px
+      ); /* ✅ 대각선 제거 */
+      mix-blend-mode: normal; /* ✅ 빛 반사 차단 */
+      opacity: 0.1;
+      animation: gradient-shift 4s ease infinite;
+    }
+  }
+
+  .r {
+    background-color: rgba(255, 25, 95, 0.18);
+    transform: translate(2.5px, -1px);
+    filter: blur(0.3px) brightness(1.2) contrast(1.1);
+  }
+
+  .g {
+    background-color: rgba(0, 255, 180, 0.18);
+    transform: translate(-2px, 0.8px);
+    filter: blur(0.3px) brightness(1.2) contrast(1.1);
+  }
+
+  .b {
+    background-color: rgba(50, 200, 255, 0.18);
+    transform: translate(1px, -0.5px);
+    filter: blur(0.3px) brightness(1.2) contrast(1.1);
+  }
+
+  .noise {
+    position: absolute;
+    inset: 0;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAAAAAClZ7nPAAAAAnRSTlMAGovxNEIAAAASSURBVBhXY2AYBaNgFIyCUQAAAQ4AAAVZ5/YAAAAASUVORK5CYII=');
+    background-repeat: repeat;
+    opacity: 0.015;
+    pointer-events: none;
+    animation: noise 0.2s steps(2) infinite;
+    mix-blend-mode: difference;
+  }
+}
+
+@keyframes paint-shift {
+  0%, 100% { transform: scale(1.1) rotate(0deg); filter: hue-rotate(0deg) brightness(1); }
+  25% { transform: scale(1.25) rotate(2deg); filter: hue-rotate(5deg) brightness(1.1); }
+  50% { transform: scale(1.05) rotate(-1deg); filter: hue-rotate(-5deg) brightness(0.95); }
+  75% { transform: scale(1.2) rotate(1deg); filter: hue-rotate(3deg) brightness(1.05); }
+}
+
+@keyframes paint-pulse {
+  0%, 100% { opacity: 0.9; }
+  50% { opacity: 1; }
+}
+
+@keyframes chaotic-shift {
+  0% { transform: translate(-30%, -30%) scale(2); }
+  50% { transform: translate(30%, 30%) scale(2.2); }
+  100% { transform: translate(-30%, -30%) scale(2); }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+}
+
+@keyframes channel-shift {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(2px, -1.5px) skew(0.4deg); }
+  50% { transform: translate(-1.5px, 1px) skew(-0.3deg); }
+  75% { transform: translate(1px, -0.8px) skew(0.2deg); }
+}
+
+@keyframes pre-channel-shift {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(1px, -0.5px) skew(0.2deg); }
+  50% { transform: translate(-0.8px, 0.4px) skew(-0.1deg); }
+  75% { transform: translate(0.5px, -0.3px) skew(0.1deg); }
+}
+
+@keyframes noise {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(-0.3%, -0.3%) scale(1.002); }
+  50% { transform: translate(0.3%, 0.3%) scale(0.998); }
+  75% { transform: translate(-0.3%, 0.3%) scale(1.002); }
+}
+
+@keyframes pre-noise {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(-0.4%, -0.4%) scale(1.002); }
+  50% { transform: translate(0.4%, 0.4%) scale(0.998); }
+  75% { transform: translate(-0.3%, 0.3%) scale(1.001); }
+}

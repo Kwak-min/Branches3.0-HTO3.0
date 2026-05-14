@@ -1,0 +1,30 @@
+.status-icon-container {
+    display: flex;
+    flex-direction: column;
+    width: 80px;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 0 16px 0;
+    margin-top: 16px;
+
+    .vertical-line {
+        width: 4px;
+        background: rgba(255, 255, 255, 0.2);
+        height: calc(100% - 30px);
+        border-radius: 2px;
+        height: 100%;
+    }
+
+    .progress {
+        background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0.3) 100%);
+    }
+
+    .completed {
+        background: #fff;
+    }
+}
+
+.flag {
+    justify-content: flex-start;
+}

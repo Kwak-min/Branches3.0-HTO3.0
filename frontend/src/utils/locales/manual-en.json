@@ -1,0 +1,26 @@
+{
+  "title": "HACKING LAB MANUAL",
+  "welcomeTitle": "Welcome to the Hacking Lab!",
+  "welcomeMessage": "This is a safe space to hone your cybersecurity skills. Learn the basic rules and start the tutorial right away!",
+  "guideTitle": "Basic Rules",
+  "rules": [
+    "Solve the challenges in each machine to capture the \"Flag\".",
+    "Completing machines earns you EXP and raises your ranking.",
+    "You can use hints if you get stuck, but a small penalty will apply."
+  ],
+  "nextStepsTitle": "What should we do first?",
+  "nextStepsMessage": "Choose an option below to get started.",
+  
+  "tutorialLabel": "View Tutorial",
+  "tutorialDescription": "Learn about the basic flow and rules of the game.",
+  "playLabel": "Play Real Machines",
+  "playDescription": "If you're ready, challenge a real machine right now!",
+  
+  "startTutorialLabel": "Start Guided Tutorial",
+  "startTutorialDescription": "Attack a real machine with a step-by-step guide.",
+  "learnBasicsLabel": "Learn Hacking Basics",
+  "learnBasicsDescription": "Study the essential terms and concepts for hacking.",
+
+  "nextPage": "Next",
+  "prevPage": "Prev"
+}

@@ -1,0 +1,279 @@
+.sidebarMenu {
+  position: relative;
+
+  /* ✅ 배경 반투명 + 블러 (불투명도 40%) */
+  background: rgba(5, 10, 20, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  /* ✅ 네온 블루 테두리 및 그림자 */
+  border-right: 1px solid rgba(0, 255, 255, 0.2);
+  box-shadow:
+    inset 0 0 20px rgba(0, 255, 255, 0.08),
+    0 0 10px rgba(0, 255, 255, 0.15);
+
+  /* ✅ CRT 스캔라인 효과 */
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(0, 255, 255, 0.05) 0px,
+      rgba(0, 255, 255, 0.05) 2px,
+      transparent 2px,
+      transparent 4px
+    );
+    mix-blend-mode: overlay;
+    opacity: 0.12;
+    pointer-events: none;
+  }
+
+  width: var(--sidebar-width);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  transition: width 0.3s ease-in-out;
+  font-size: 16px;
+  color: var(--color-gainsboro);
+  font-family: var(--font-roboto);
+
+  /* ====================== HEADER ====================== */
+  .headerParent {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    .header {
+      align-self: stretch;
+      border-bottom: 1px dashed rgba(0, 255, 255, 0.25);
+      height: 85px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 5px;
+      margin-right: 5px;
+      padding-bottom: 9px;
+      box-sizing: border-box;
+
+      .logoimage {
+        width: 100%;
+        height: 100%;
+
+        .logoContainerIcon {
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          object-fit: contain;
+          transition: all 0.2s ease-in-out;
+          filter: drop-shadow(0 0 6px rgba(0, 255, 255, 0.3));
+
+          &:hover {
+            transform: translateX(-2px);
+            filter: drop-shadow(0 0 10px #00ffff);
+          }
+        }
+      }
+
+      .sidebarMenuButton {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: none;
+        border: none;
+        padding: 0;
+
+        .collapse_button {
+          width: 40px;
+          height: 40px;
+          background: none;
+          color: #D1D1D1;
+          object-fit: contain;
+          cursor: pointer;
+          transition: all 0.3s ease-in-out;
+
+          .collapse_icon_open {
+            transition: all 0.3s ease-in-out;
+            &:hover {
+              transform: translateX(-2px);
+              filter: drop-shadow(0 0 5px #00ffff);
+            }
+          }
+
+          .collapse_icon_close {
+            transition: all 0.3s ease-in-out;
+            &:hover {
+              transform: translateX(-2px);
+              filter: drop-shadow(0 0 5px #00ffff);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* ====================== MENU ====================== */
+  .topMenu {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 20px 16px;
+
+    .verticalMenuList {
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      .verticalMenuItem {
+        height: 60px;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 4px 16px;
+        box-sizing: border-box;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+          background: rgba(0, 255, 255, 0.08);
+          transform: translateY(-2px);
+          box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+
+        .menuIcon {
+          width: 24px;
+          height: 24px;
+          position: relative;
+          transition: margin 0.3s ease-in-out;
+          filter: drop-shadow(0 0 5px rgba(0, 255, 255, 0.3));
+        }
+
+        .label {
+          flex: 1;
+          position: relative;
+          padding-left: 10px;
+          line-height: 160%;
+          white-space: nowrap;
+          width: 120px;
+          overflow: hidden;
+          opacity: 1;
+          transform: translateX(0);
+          transition: all 0.3s ease-in-out,
+                      opacity 0.2s ease-in-out,
+                      transform 0.2s ease-in-out;
+          display: block;
+        }
+      }
+    }
+  }
+
+  /* ====================== COLLAPSED ====================== */
+  &.collapsed {
+    width: var(--sidebar-collapsed);
+    align-items: center;
+
+    .header {
+      justify-content: center;
+
+      .logoimage {
+        display: none;
+      }
+    }
+
+    .topMenu {
+      .verticalMenuList {
+        .verticalMenuItem {
+          justify-content: center;
+          padding: 4px;
+
+          .menuIcon {
+            margin: 0;
+          }
+
+          .label {
+            width: 0;
+            padding-left: 0;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.3s ease-in-out,
+                      opacity 0.2s ease-in-out,
+                      transform 0.2s ease-in-out,
+                      display 0.5s linear 0.3s;
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* ====================== SELECTED STATE ====================== */
+.selected {
+  background: rgba(0, 255, 255, 0.15);
+  border-radius: 6px;
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
+
+  .label {
+    color: #e0ffff;
+  }
+
+  .menuIcon {
+    color: #00ffff;
+  }
+
+  &:hover {
+    .label {
+      color: #ffffff;
+    }
+  }
+}
+
+/* ====================== TOOLTIP ====================== */
+@media (min-width: 1000px) {
+  .sidebarMenu.collapsed {
+    .verticalMenuItem {
+      &:hover {
+        position: relative;
+
+        &::after {
+          content: attr(data-tooltip);
+          position: absolute;
+          left: 100%;
+          top: 50%;
+          transform: translateY(-50%);
+          background: rgba(0, 20, 30, 0.9);
+          border: 1px solid rgba(0, 255, 255, 0.4);
+          padding: 8px 12px;
+          border-radius: 4px;
+          white-space: nowrap;
+          z-index: 1000;
+          margin-left: 10px;
+          box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
+          opacity: 0;
+          animation: tooltipFadeIn 0.2s ease-in-out forwards;
+          color: #aefaff;
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translate(10px, -50%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, -50%);
+  }
+}

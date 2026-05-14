@@ -1,0 +1,136 @@
+/* About Section */
+#about {
+  padding: 100px 0;
+}
+
+.about {
+  font-size: 20px;
+  height: 70vh;
+  text-wrap: pretty;
+  text-align: left;
+  margin-top: 5%;
+  img {
+    object-fit: contain;
+    object-position: center;
+    width: clamp(300px, 80%, 520px);
+    height: clamp(300px, 80%, 520px);
+    border-radius: 10px;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+  }
+
+  & h3 {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0 0 20px;
+  }
+
+  & h2 {
+    position: relative;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+
+    &::after {
+      position: absolute;
+      content: "";
+      background: linear-gradient(to right, var(--secondary-layout) 0%, var(--blue-200) 100%);
+      height: 4px;
+      width: 60px;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  .about-text {
+    list-style: none;
+    
+    p {
+      text-indent: 1rem;
+    }
+
+    .list-style {
+      display: flex;
+    }
+    
+    .list-text {
+      display: flex;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    & li {
+      margin-left: 6px;
+      padding: 0;
+      color: #777;
+
+      &::before {
+        color: #5ca9fb;
+        font-size: 16px;
+        font-weight: 300;
+        padding-right: 8px;
+      }
+    }
+  }
+
+  img {
+    width: clamp(300px, 80%, 520px);
+    margin-top: 10px;
+    background: #fff;
+    border-right: 0;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.06);
+  }
+
+  p {
+    line-height: 24px;
+    margin: 30px 0;
+    color: #777;
+  }
+
+  .row {
+    display: block;
+  }
+  
+  h2 {
+    text-transform: uppercase;
+    margin: 0 0 20px;
+    font-weight: 800;
+    font-size: 32px;
+  }
+
+  h4 {
+    margin: 5px 0;
+    font-size: 24px;
+    color: #333;
+    font-weight: 600;
+  }
+}
+
+.about-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 0%;
+  margin-bottom: 0%;
+}
+
+
+@media (min-width: 768px) {
+  .about-container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .about-container {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .about-container {
+    width: 1170px;
+  }
+}

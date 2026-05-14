@@ -1,0 +1,25 @@
+{
+    "introduction": {
+      "title": "Introduction",
+      "content": "<0>\u00A0\u00A0Hack This Out</0> is a web-based <1>Hacking Lab</1>.<br />\u00A0Cyber Security is hard and boring, but we believe that it can be <2>Fun</2> and <3>Exciting</3>.<br />\u00A0\u00A0The journey will be <4>Rough</4> and <5>Exhausting</5>. <br />\u00A0So, we prepared <6>Gaming experience</6> for your fun and exciting journey."
+    },
+    "gamingRules": {
+      "title": "Gaming Rules",
+      "list": {
+        "0": "Please maintain <0>respect</0> between players.",
+        "1": "This site is a <0>simulated hacking platform</0>. Please refrain from other uses.",
+        "2": "Please use our site to the best of your <0>abilities</0>."
+      }
+    },
+    "gameModes": {
+      "title": "Game Modes",
+      "machine": "<0>\u00A0\u00A0\u00A0Machine</0><br /><1>\u00A0\u00A0The Basic!</1> You have to hack vulnerable machines.<br />\u00A0\u00A0Find the <2>Flag</2> and complete the machine.<br /><br />",
+      "contest": "<0>\u00A0\u00A0\u00A0Contest</0><br /><1>\u00A0\u00A0The Competition!</1> Compete against other players.<br />\u00A0\u00A0Each contest has a <2>Period</2>.<br />\u00A0\u00A0The <3>Quickest</3> player who completes all given tasks in the period, gets to <4>Win</4>."
+    },
+    "additionalGameModes": {
+      "video": {
+        "title": "Tutorial Video"
+      }
+    },
+    "language": "Language"
+} 

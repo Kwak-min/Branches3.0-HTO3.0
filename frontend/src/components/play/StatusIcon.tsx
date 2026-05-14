@@ -1,0 +1,52 @@
+import React from 'react';
+import { FaRegCircle, FaRegDotCircle, FaRegCheckCircle } from 'react-icons/fa';
+import { MdFlagCircle } from "react-icons/md";
+import '../../assets/scss/play/StatusIcon.scss';
+
+interface StatusIconProps {
+  status: string;
+}
+
+const StatusIcon: React.FC<StatusIconProps> = ({ status }) => {
+  switch (status) {
+    case 'idle':
+      return (
+        <div className='status-icon-container'>
+          <FaRegCircle size={30} color="rgba(255, 255, 255, 0.3)" title="Idle" />
+          <div className="vertical-line"></div>
+        </div>
+      );
+    case 'inProgress':
+    case 'pending':
+      return(
+        <div className='status-icon-container'>
+          <FaRegDotCircle size={30} color="#fff" title="In Progress" />
+          <div className="vertical-line progress"></div>
+        </div>
+      );
+    case 'completed':
+    case 'running':
+      return (
+        <div className='status-icon-container'>
+          <FaRegCheckCircle size={30} color="#fff" title="Completed" />
+          <div className="vertical-line completed"></div>
+        </div>
+      );
+    case 'flag' :
+      return (
+        <div className='status-icon-container flag'>
+        <MdFlagCircle size={40} color="rgba(255, 255, 255, 0.3)" title="Flag" />
+        </div>
+      );
+    case 'flag-success':
+      return (
+        <div className='status-icon-container flag'>
+        <MdFlagCircle size={40} color="#fff" title="Flag-success" />
+        </div>
+      )
+    default:
+      return null;
+  }
+};
+
+export default StatusIcon;

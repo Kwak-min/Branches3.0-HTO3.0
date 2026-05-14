@@ -1,0 +1,477 @@
+// ArenaResultPage.scss - Cyberpunk Theme
+.ar-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: radial-gradient(circle at 20% 20%, #02010a, #000);
+  color: #eafaff;
+  padding: 2rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  // 배경 그리드 패턴
+  .ar-grid-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+      linear-gradient(rgba(0, 225, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 225, 255, 0.1) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.07;
+    animation: grid-pan 10s linear infinite;
+  }
+
+  @keyframes grid-pan {
+    0% { background-position: 0 0; }
+    100% { background-position: 60px 60px; }
+  }
+}
+
+// ========================================
+// 로딩 & 에러 상태
+// ========================================
+
+.ar-loading, .ar-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  text-align: center;
+
+  .ar-spinner {
+    width: 48px;
+    height: 48px;
+    border: 3px solid rgba(0, 246, 255, 0.2);
+    border-top-color: #00f6ff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 0 20px rgba(0, 246, 255, 0.3);
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  p {
+    font-size: 1.1rem;
+    color: rgba(234, 250, 255, 0.6);
+    margin-bottom: 1rem;
+    letter-spacing: 0.5px;
+  }
+
+  h2 {
+    color: #ff4444;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 20px rgba(255, 68, 68, 0.5);
+  }
+}
+
+// ========================================
+// 헤더
+// ========================================
+
+.ar-header {
+  text-align: center;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(0, 246, 255, 0.2);
+
+  .ar-game-over {
+    .ar-game-over-text {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: #00f6ff;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 0.5rem;
+      text-shadow:
+        0 0 20px rgba(0, 246, 255, 0.8),
+        0 0 40px rgba(0, 246, 255, 0.5);
+      animation: titleGlow 2s ease-in-out infinite;
+    }
+
+    .ar-arena-mode {
+      font-size: 1.1rem;
+      color: #eafaff;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      opacity: 0.9;
+    }
+
+    .ar-mission-stats {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      font-size: 0.85rem;
+      color: rgba(234, 250, 255, 0.6);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+
+      .ar-stat {
+        font-weight: 600;
+      }
+
+      .ar-separator {
+        color: #00ffae;
+      }
+    }
+  }
+}
+
+@keyframes titleGlow {
+  0%, 100% {
+    text-shadow:
+      0 0 20px rgba(0, 246, 255, 0.8),
+      0 0 40px rgba(0, 246, 255, 0.5);
+  }
+  50% {
+    text-shadow:
+      0 0 30px rgba(0, 246, 255, 1),
+      0 0 60px rgba(0, 246, 255, 0.7),
+      0 0 90px rgba(0, 246, 255, 0.5);
+  }
+}
+
+
+// ========================================
+// 순위 리스트 - 세로 리스트 레이아웃
+// ========================================
+
+.ar-rankings {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto 1.5rem auto;
+  padding: 0 1rem;
+
+  &.show .ar-rank-item {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.ar-rank-item {
+  display: grid;
+  grid-template-columns: 45px 1fr auto;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 0.75rem 1.25rem;
+  background: rgba(0, 5, 15, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 246, 255, 0.3);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateX(-20px);
+
+  // 순위별 애니메이션 딜레이
+  &.rank-1 { animation-delay: 0.05s; }
+  &.rank-2 { animation-delay: 0.1s; }
+  &.rank-3 { animation-delay: 0.15s; }
+  &.rank-4 { animation-delay: 0.2s; }
+  &.rank-5 { animation-delay: 0.25s; }
+  &.rank-6 { animation-delay: 0.3s; }
+  &.rank-7 { animation-delay: 0.35s; }
+  &.rank-8 { animation-delay: 0.4s; }
+
+  &.is-me {
+    border-color: #00f6ff;
+    background: rgba(0, 246, 255, 0.12);
+    box-shadow: 0 0 20px rgba(0, 246, 255, 0.3);
+  }
+
+  &:hover {
+    border-color: #00f6ff;
+    box-shadow: 0 0 25px rgba(0, 246, 255, 0.4);
+    transform: translateX(4px);
+  }
+
+  // 순위 번호 (왼쪽)
+  .ar-rank-number {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: rgba(234, 250, 255, 0.4);
+    letter-spacing: 0;
+    text-align: center;
+  }
+
+  // 플레이어 정보 (중앙)
+  .ar-rank-player-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    .ar-rank-player-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #eafaff;
+      text-transform: uppercase;
+      letter-spacing: 0.75px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      .ar-you-tag {
+        background: #00f6ff;
+        color: #000;
+        padding: 0.15rem 0.4rem;
+        border-radius: 2px;
+        font-size: 0.6rem;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+      }
+    }
+
+    .ar-rank-player-status {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+
+      &.victory {
+        color: #00ffae;
+      }
+      &.connected {
+        color: #ffa726;
+      }
+      &.defeated {
+        color: #ff4444;
+      }
+    }
+
+    .ar-rank-player-details {
+      font-size: 0.75rem;
+      color: rgba(234, 250, 255, 0.5);
+      letter-spacing: 0.2px;
+    }
+  }
+
+  // 완료 시간 (오른쪽)
+  .ar-rank-completion-time {
+    font-size: 1.1rem;
+    color: #00f6ff;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+    font-family: var(--font-display);
+    text-align: right;
+
+    &.incomplete {
+      opacity: 0.3;
+      color: rgba(234, 250, 255, 0.3);
+    }
+  }
+
+  // 1등 특별 스타일
+  &.rank-1 {
+    border-color: #ffd700;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(0, 5, 15, 0.7) 100%);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+
+    .ar-rank-number {
+      color: #ffd700;
+      text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+    }
+
+    .ar-rank-player-info .ar-rank-player-name {
+      color: #ffd700;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    }
+
+    .ar-rank-completion-time {
+      color: #ffd700;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    }
+  }
+
+  // 2등 특별 스타일
+  &.rank-2 {
+    border-color: rgba(192, 192, 192, 0.5);
+    background: linear-gradient(135deg, rgba(192, 192, 192, 0.1) 0%, rgba(0, 5, 15, 0.7) 100%);
+
+    .ar-rank-number {
+      color: #c0c0c0;
+    }
+  }
+
+  // 3등 특별 스타일
+  &.rank-3 {
+    border-color: rgba(205, 127, 50, 0.5);
+    background: linear-gradient(135deg, rgba(205, 127, 50, 0.1) 0%, rgba(0, 5, 15, 0.7) 100%);
+
+    .ar-rank-number {
+      color: #cd7f32;
+    }
+  }
+}
+
+// ========================================
+// 액션 버튼
+// ========================================
+
+.ar-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: auto;
+  padding-top: 1.25rem;
+  opacity: 0;
+  animation: slideUp 0.6s ease forwards;
+  flex-shrink: 0;
+
+  &.show {
+    animation-delay: 0.4s;
+  }
+
+  .ar-button {
+    padding: 0.75rem 2rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid;
+    background: transparent;
+    font-family: var(--font-display);
+
+    &.primary {
+      color: #00f6ff;
+      border-color: #00f6ff;
+
+      &:hover {
+        background: rgba(0, 246, 255, 0.15);
+        box-shadow: 0 0 25px rgba(0, 246, 255, 0.5);
+      }
+    }
+
+    &.secondary {
+      color: rgba(234, 250, 255, 0.7);
+      border-color: rgba(234, 250, 255, 0.3);
+
+      &:hover {
+        color: #eafaff;
+        border-color: rgba(234, 250, 255, 0.6);
+        background: rgba(234, 250, 255, 0.05);
+        box-shadow: 0 0 15px rgba(234, 250, 255, 0.2);
+      }
+    }
+  }
+}
+
+// ========================================
+// 애니메이션
+// ========================================
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ========================================
+// 반응형 디자인
+// ========================================
+
+@media (max-width: 768px) {
+  .ar-container {
+    padding: 1rem;
+  }
+
+  .ar-header .ar-game-over {
+    .ar-game-over-text {
+      font-size: 1.8rem;
+      letter-spacing: 2px;
+    }
+
+    .ar-arena-mode {
+      font-size: 0.95rem;
+    }
+
+    .ar-mission-stats {
+      flex-direction: column;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+    }
+  }
+
+  .ar-rankings {
+    .ar-rank-item {
+      grid-template-columns: 50px 1fr auto;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+
+      .ar-rank-number {
+        font-size: 1.5rem;
+      }
+
+      .ar-rank-player-info .ar-rank-player-name {
+        font-size: 1rem;
+      }
+
+      .ar-rank-completion-time {
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  .ar-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+
+    .ar-button {
+      width: 100%;
+      padding: 0.8rem 2rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .ar-header .ar-game-over .ar-game-over-text {
+    font-size: 1.5rem;
+    letter-spacing: 1.5px;
+  }
+
+  .ar-rankings .ar-rank-item {
+    grid-template-columns: 40px 1fr;
+    gap: 0.75rem;
+    padding: 0.875rem 1rem;
+
+    .ar-rank-number {
+      font-size: 1.3rem;
+    }
+
+    .ar-rank-player-info .ar-rank-player-name {
+      font-size: 0.95rem;
+    }
+
+    .ar-rank-completion-time {
+      grid-column: 2 / 3;
+      text-align: left;
+      font-size: 1.1rem;
+      margin-top: 0.25rem;
+    }
+  }
+}

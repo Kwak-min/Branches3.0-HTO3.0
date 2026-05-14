@@ -1,0 +1,81 @@
+{
+  "name": "hackthisout",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@fontsource-variable/noto-sans-kr": "^5.1.1",
+    "@fontsource/roboto": "^5.1.1",
+    "@mui/icons-material": "^6.4.5",
+    "@mui/material": "^6.4.5",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.2.0",
+    "@testing-library/user-event": "^14.6.1",
+    "axios": "^1.7.9",
+    "gh-pages": "^6.3.0",
+    "i18next": "^24.2.2",
+    "react": "^18.3.1",
+    "react-confetti": "^6.2.3",
+    "react-dom": "^18.3.1",
+    "react-helmet-async": "^2.0.5",
+    "react-i18next": "^15.4.1",
+    "react-icons": "^5.5.0",
+    "react-joyride": "^2.9.3",
+    "react-material-ui-carousel": "^3.4.2",
+    "react-player": "^2.16.0",
+    "react-rnd": "^10.5.2",
+    "react-router-dom": "^7.9.6",
+    "react-toastify": "^11.0.5",
+    "react-useanimations": "^2.10.0",
+    "socket.io-client": "^4.8.1",
+    "swiper": "^11.2.4",
+    "web-vitals": "^4.2.4"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test": "vitest",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-private-property-in-object": "^7.25.9",
+    "@types/node": "^25.6.0",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@types/react-slick": "^0.23.13",
+    "@types/react-syntax-highlighter": "^15.5.13",
+    "@types/react-toastify": "^4.1.0",
+    "@typescript-eslint/eslint-plugin": "^8.25.0",
+    "@typescript-eslint/parser": "^8.25.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.21.0",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "sass": "^1.85.1",
+    "sass-loader": "^16.0.5",
+    "typescript": "^5.7.3",
+    "vite": "^6.2.0"
+  }
+}

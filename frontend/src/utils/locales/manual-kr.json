@@ -1,0 +1,26 @@
+{
+  "title": "HACKING LAB 매뉴얼",
+  "welcomeTitle": "해킹 랩에 오신 것을 환영합니다!",
+  "welcomeMessage": "이곳은 여러분의 사이버 보안 기술을 안전하게 연마할 수 있는 공간입니다. 기본적인 규칙을 알아보고, 지금 바로 튜토리얼을 시작해보세요!",
+  "guideTitle": "기본 규칙",
+  "rules": [
+    "각 머신에 주어진 과제를 해결하고 \"깃발(Flag)\"을 획득하세요.",
+    "머신을 완료하면 경험치(EXP)를 얻고 랭킹이 상승합니다.",
+    "진행이 막히면 힌트를 사용할 수 있지만, 약간의 페널티가 적용됩니다."
+  ],
+  "nextStepsTitle": "무엇을 먼저 해볼까요?",
+  "nextStepsMessage": "아래 옵션 중 하나를 선택하여 시작하세요.",
+
+  "tutorialLabel": "튜토리얼 보기",
+  "tutorialDescription": "게임의 기본적인 흐름과 규칙에 대해 알아봅니다.",
+  "playLabel": "실전 머신 플레이",
+  "playDescription": "준비가 되셨다면, 다양한 난이도의 머신에 도전하여 실력을 증명하세요.",
+  
+  "startTutorialLabel": "가이드 튜토리얼 시작",
+  "startTutorialDescription": "단계별 가이드와 함께 실제 머신을 공략하며 기본을 익힙니다.",
+  "learnBasicsLabel": "게임 기본기 익히기",
+  "learnBasicsDescription": "해킹의 첫걸음, 게임의 기본 조작과 개념을 배웁니다.",
+
+  "nextPage": "다음",
+  "prevPage": "이전"
+}

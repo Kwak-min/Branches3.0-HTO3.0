@@ -1,0 +1,274 @@
+@use '../setting/mixin' as *;
+
+.personalInfo-container {
+    width: clamp(85%, 90%, 95%);
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 1.875rem;
+
+    .info-container {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-wrap: wrap;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 1.25rem;
+        padding: clamp(1rem, 2rem, 2.5rem);
+        border: 0.0625rem solid rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(0.625rem);
+
+        .avatar-container {
+            width: clamp(200px, 30%, 250px);
+            padding: 0.9375rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .avatar-img {
+                width: clamp(140px, 180px, 200px);
+                height: clamp(140px, 180px, 200px);
+                border-radius: 50%;
+                border: 3px solid rgba(255, 255, 255, 0.1);
+                object-fit: cover;
+                transition: all 0.3s ease-in-out;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+                &:hover {
+                    border-color: var(--color-primary);
+                    transform: scale(1.02);
+                }
+            }
+
+            .avatar-form {
+                width: 200px;
+                margin-top: 24px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 8px;
+
+                .avatar-input {
+                    width: 120px;
+                    padding: 10px;
+                    background: rgba(255, 255, 255, 0.08);
+                    border-radius: 10px;
+                    color: var(--color-white);
+                    cursor: pointer;
+                    transition: all 0.3s ease-in-out;
+                    font-weight: 600;
+                    white-space: nowrap;
+                    text-align: center;
+                    line-height: 1.2;
+
+                    &:hover {
+                        transform: translateY(-2px);
+                        background-color: var(--blue-400);
+                        filter: drop-shadow(0 0 10px var(--blue-500));
+                    }
+                }
+
+                .avatar-button { 
+                    width: 64px;
+                    height: 36px;
+                    padding: 10px;
+                    border-radius: 10px;
+                    background: var(--color-primary);
+                    color: var(--color-white);
+                    border: none;
+                    cursor: pointer;
+                    transition: all 0.3s ease-in-out;
+                    font-weight: 600;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    &:hover {
+                        background: var(--blue-400);
+                        transform: translateY(-2px);
+                        filter: drop-shadow(0 0 10px var(--blue-500));
+                    }
+                }
+            }
+        }
+
+        .user-container {
+            flex: 1;
+            min-width: 280px;
+            padding: clamp(1rem, 2rem, 3rem);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            .name-container,
+            .email-container,
+            .username-container,
+            .exp-container,
+            .coin-container {
+                padding: 16px;
+                background: rgba(255, 255, 255, 0.02);
+                border-radius: 12px;
+                transition: all 0.3s ease-in-out;
+                border: 1px solid rgba(255, 255, 255, 0.05);
+
+                &:hover {
+                    background: rgba(255, 255, 255, 0.04);
+                    filter: drop-shadow(0 0 10px var(--blue-200));
+                    transform: translateY(-2px);
+                }
+
+                label {
+                    font-size: var(--font-size-small);
+                    color: var(--color-gray);
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+
+    .modify-container {
+        width: 100%;
+        display: flex;
+        gap: clamp(1rem, 2rem, 3rem);
+        padding: clamp(1.5rem, 2rem, 2.5rem);
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 1.25rem;
+        border: 0.0625rem solid rgba(255, 255, 255, 0.08);
+        flex-wrap: wrap;
+        backdrop-filter: blur(0.625rem);
+
+        input {
+            width: 100%;
+            height: clamp(40px, 48px, 56px);
+            padding: 0 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: var(--color-white);
+            font-size: var(--font-size-small);
+            transition: all 0.3s ease-in-out;
+
+            &::placeholder {
+                color: rgba(255, 255, 255, 0.4);
+            }
+
+            &:focus {
+                outline: none;
+                border-color: var(--color-primary);
+                background: rgba(255, 255, 255, 0.08);
+                box-shadow: 0 0 0 2px rgba(var(--color-primary-rgb), 0.2);
+            }
+        }
+
+        button {
+            width: clamp(70px, 80px, 90px);
+            height: clamp(36px, 40px, 44px);
+            padding: 0;
+            background: transparent;
+            color: var(--color-white);
+            border: 1px solid rgba(252, 252, 233, 0.12) !important;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            font-size: var(--font-size-small);
+            font-weight: 600;
+            margin-left: auto;
+            margin-right: 5px;
+
+            &:hover {
+                background: var(--blue-400);
+                transform: translateY(-2px);
+                filter: drop-shadow(0 0 10px var(--blue-500));
+            }
+        }
+
+        .name-form,
+        .password-form {
+            flex: 1;
+            min-width: 280px;
+            padding: clamp(1rem, 1.5rem, 2rem);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            position: relative;
+            
+            h3 {
+                font-size: var(--font-size-mid);
+                margin-bottom: 16px;
+                color: var(--color-white);
+                font-weight: 600;
+                letter-spacing: -0.5px;
+            }
+
+            .input-wrapper {
+                position: relative;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+
+                input {
+                    width: calc(100% - 90px);
+                }
+
+                button {
+                    position: absolute;
+                    right: 0;
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+            }
+
+            .button-container {
+                width: 100%;
+                display: flex;
+                justify-content: flex-end; 
+            }
+
+            button {
+                width: clamp(70px, 80px, 90px);
+                height: clamp(36px, 40px, 44px);
+                padding: 0;
+                background: transparent;
+                color: var(--color-white);
+                border: 2px solid var(--color-primary);
+                border-radius: 8px;
+                cursor: pointer;
+                transition: all 0.2s ease-in-out;
+                font-size: var(--font-size-small);
+                font-weight: 600;
+
+                &:hover {
+                    background: var(--blue-400);
+                    transform: translateY(-2px);
+                    filter: drop-shadow(0 0 10px var(--blue-500));
+                }
+            }
+        }
+
+        .password-form button {
+            background: transparent;
+            border: 2px solid var(--color-primary);
+            
+            &:hover {
+                background: var(--blue-400);
+                filter: drop-shadow(0 0 10px var(--blue-500));
+            }
+        }
+
+        .success-message {
+            color: var(--color-white);
+            background-color: var(--blue-400);
+            border: 1px solid var(--blue-400);
+            border-radius: 4px;
+            padding: 0.75rem 1.25rem;
+            margin: 0.5rem 0;
+            font-size: 0.875rem;
+          }
+    }
+}
+
+#file {
+    display: none;
+}

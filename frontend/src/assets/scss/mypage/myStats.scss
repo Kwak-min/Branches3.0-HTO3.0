@@ -1,0 +1,13 @@
+@use "../style" as *;
+
+.my_stats_container {
+    @include background_set;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    height: 100vh;
+    width: 100%;
+    font-family: var(--font-display);
+}

@@ -1,0 +1,153 @@
+/* LoginForm.scss */
+
+.login-form {
+    position: relative;
+    width: clamp(280px, 80%, 400px);
+    margin: 0 auto;
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    height: auto;
+    margin-top: clamp(10vh, 15vh, 20vh);
+    animation: glitch-fade-in 1s steps(2, end) both;
+
+    .login-title {
+        color: #00f6ff;
+        font-size: clamp(1.75rem, 5vw, 2.25rem);
+        font-weight: 900;
+        padding-bottom: clamp(1rem, 2vw, 1.5rem);
+        text-shadow: 0 0 8px #00f6ff, 0 0 16px rgba(0, 246, 255, 0.4);
+    }
+
+    .input-box {
+        width: 100%;
+        height: clamp(45px, 6vh, 55px);
+        position: relative;
+        margin-bottom: clamp(1rem, 2vw, 1.5rem);
+        font-weight: 600;
+
+        input {
+            height: 100%;
+            width: 100%;
+            background: #e7e7e7;
+            outline: none;
+            border: 2px solid var(--color-white);
+            font-size: clamp(14px, 1.5vw, 16px);
+            color: #333;
+            padding: 0 clamp(1rem, 2vw, 1.25rem);
+            border-radius: 10px;
+            transition: all 0.3s ease-in-out;
+
+            &:focus {
+                border: 2px solid var(--blue-500);
+                transform: translateX(2px);
+                background: #f0f0f0;
+            }
+        }
+    }
+
+    button {
+        font-weight: 600;
+        font-size: clamp(14px, 1.5vw, 16px);
+        background-color: var(--color-layout);
+        color: var(--color-white);
+        height: clamp(45px, 6vh, 55px);
+        width: 100%;
+        border: none;
+        margin-top: clamp(2rem, 4vw, 2.5rem);
+        transition: all 0.3s ease-in-out;
+        border-radius: 10px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: var(--blue-400);
+            filter: drop-shadow(0 0 10px var(--blue-500));
+            transform: translateY(-2px);
+        }
+
+        &:active {
+            transform: translateY(0);
+        }
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .login-form {
+        width: clamp(260px, 85%, 380px);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .login-form {
+        width: clamp(240px, 90%, 340px);
+        margin-top: clamp(8vh, 12vh, 15vh);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .login-form {
+        width: clamp(220px, 90%, 300px);
+        margin-top: clamp(5vh, 8vh, 10vh);
+        padding: 1rem;
+    }
+}
+
+.error,
+.error-message {
+    color: #ff3e3e;
+    background-color: rgba(255, 62, 62, 0.1);
+    padding: clamp(8px, 2vw, 12px);
+    border-radius: 10px;
+    margin: clamp(8px, 2vw, 12px) 0;
+    font-weight: 600;
+    border: 1px solid rgba(255, 62, 62, 0.2);
+}
+
+.error {
+    font-size: clamp(14px, 1.2vw, 16px);
+}
+
+.error-message {
+    font-size: clamp(12px, 1vw, 14px);
+
+    p {
+        margin: 5px 0;
+
+        &:not(:last-child) {
+            padding-bottom: 5px;
+            border-bottom: 1px solid rgba(255, 62, 62, 0.1);
+        }
+    }
+}
+
+/* ===============================
+   글리치 페이드인 애니메이션
+=============================== */
+@keyframes glitch-fade-in {
+    0% {
+        opacity: 0;
+        filter: brightness(0.4);
+        transform: scale(0.9) translateX(0);
+    }
+    10% {
+        opacity: 1;
+        transform: scale(1.03) translateX(-4px);
+        filter: brightness(2);
+    }
+    20% {
+        transform: scale(0.98) translateX(4px);
+    }
+    30% {
+        transform: scale(1.03) translateY(-2px);
+    }
+    50% {
+        clip-path: inset(10% 0 40% 0);
+        opacity: 0.7;
+    }
+    70% {
+        clip-path: inset(30% 0 30% 0);
+    }
+    100% {
+        opacity: 1;
+        clip-path: inset(0 0 0 0);
+        transform: none;
+    }
+}

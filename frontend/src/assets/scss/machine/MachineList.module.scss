@@ -1,0 +1,219 @@
+@use "../style" as *;
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=VT323&display=swap');
+
+:root {
+  --mint: #8BF3FF;
+  --bg-dark: #050912;
+  --white: #EFFFFF;
+}
+
+/* === 리스트 컨테이너 === */
+.machine_list_container {
+  background: rgba(6, 15, 25, 0.8);
+  border-radius: clamp(16px, 2vw, 24px);
+  border: 1.5px solid rgba(139, 243, 255, 0.3);
+  box-shadow: 0 0 25px rgba(139, 243, 255, 0.08);
+  padding: clamp(16px, 3vw, 32px);
+  padding-top: clamp(12px, 2vw, 20px);
+  color: var(--white);
+  font-family: var(--font-display);
+  overflow-y: hidden;
+  position: relative;
+  backdrop-filter: blur(8px);
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.03) 0px,
+      rgba(255, 255, 255, 0.015) 1px,
+      transparent 2px
+    );
+    opacity: 0.15;
+    pointer-events: none;
+  }
+
+  .machine_list_title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3vw, 2.5rem);
+    color: var(--mint);
+    text-shadow: 0 0 10px var(--mint);
+    margin-bottom: 1rem;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 80px;
+      height: 2px;
+      background: var(--mint);
+      box-shadow: 0 0 10px var(--mint);
+    }
+  }
+
+  /* === 테이블 === */
+  .machine_list_table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+
+    thead {
+      background: rgba(139, 243, 255, 0.05);
+      border-bottom: 1px solid rgba(139, 243, 255, 0.3);
+      th {
+        font-size: 1rem;
+        letter-spacing: 1px;
+        color: var(--mint);
+        text-shadow: 0 0 8px var(--mint);
+        padding: 1rem;
+        font-family: var(--font-display);
+      }
+    }
+
+    /* ✅ 수정된 부분 시작 */
+    tbody {
+      display: table-row-group; /* ✅ block → table-row-group */
+      width: 100%;
+      overflow-y: auto;
+      max-height: clamp(250px, 50vh, 400px);
+      scrollbar-width: none;
+
+      tr {
+        display: table-row; /* ✅ table-row로 변경 */
+        width: 100%;
+        transition: all 0.25s ease-in-out;
+        position: relative;
+
+        &:hover {
+          background: rgba(139, 243, 255, 0.05);
+          box-shadow: 0 0 12px rgba(139, 243, 255, 0.15);
+          transform: translateY(-1px);
+        }
+      }
+
+      td {
+        display: table-cell; /* ✅ table-cell로 변경 */
+        text-align: center;
+        padding: 1rem 0.5rem;
+        vertical-align: middle;
+      }
+
+      /* ✅ 각 열의 너비 */
+      .table_name, .machine_name { width: 30%; }
+      .table_category, .machine_category { width: 20%; }
+      .table_rating, .machine_rating { width: 20%; }
+      .table_playCount, .machine_playCount { width: 15%; }
+      .table_details, .machine_details { width: 15%; }
+
+      /* ✅ 드래그 가능 영역 */
+      .machine_name {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        user-select: text;
+
+        span {
+          color: var(--mint);
+          text-shadow: 0 0 6px var(--mint);
+          user-select: text;
+        }
+      }
+
+      .machine_category {
+        color: var(--white);
+      }
+
+      .machine_details .details_button {
+        background: transparent;
+        border: 1.5px solid var(--mint);
+        color: var(--mint);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background: rgba(139, 243, 255, 0.15);
+          box-shadow: 0 0 15px var(--mint);
+          animation: glitchMove 0.3s ease-in-out;
+        }
+      }
+    }
+    /* ✅ 수정된 부분 끝 */
+  }
+}
+
+/* === 글리치 버튼 진동 === */
+@keyframes glitchMove {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-1px, 1px); }
+  40% { transform: translate(1px, -1px); }
+  60% { transform: translate(-1px, 0); }
+  80% { transform: translate(1px, 1px); }
+  100% { transform: translate(0, 0); }
+}
+
+/* === 필터 === */
+.category_filter_toggle {
+  color: var(--mint);
+  &:hover {
+    filter: drop-shadow(0 0 8px var(--mint));
+  }
+
+  .category_filter {
+    background: rgba(6, 15, 25, 0.95);
+    border: 1px solid var(--mint);
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(139, 243, 255, 0.2);
+
+    .category_select {
+      border: 1px solid var(--mint);
+      background: transparent;
+      color: var(--mint);
+      font-family: var(--font-display);
+    }
+  }
+}
+.detail_buttons_wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  padding-right: 16px;
+}
+
+.toggle_button {
+  width: 40px;
+  height: 40px;
+  font-size: 0.9rem;
+  font-family: var(--font-display);
+  border: 1.5px solid var(--mint);
+  background: transparent;
+  color: var(--mint);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.go_button {
+  width: 68px;
+  height: 40px;
+  border: 1.5px solid var(--mint);
+  background: transparent;
+  color: var(--mint);
+  border-radius: 8px;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: 0.25s ease;
+}

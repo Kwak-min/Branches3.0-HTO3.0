@@ -1,0 +1,39 @@
+@mixin background_set {
+    width: clamp(var(--container-width), 100vw, var(--container-width));
+    min-width: clamp(var(--container-min-width), 100vw, var(--container-min-width));
+    height: clamp(var(--container-height), 100vh, var(--container-height));
+    min-height: clamp(var(--container-min-height), 100vh, var(--container-min-height));
+    background: var(--color-background-transparent);
+    //border-radius: clamp(16px, 2vw, 24px);
+    filter: drop-shadow(0 0 10px var(--blue-200));
+    transition: all 0.3s ease-in-out;
+    &:hover {
+       filter: drop-shadow(0 0 10px var(--blue-300));
+    }
+}
+
+
+@mixin flex_center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin button_color {
+    border: 2px solid var(--color-white);
+    background: var(--color-layout);
+    color: var(--color-white);
+
+    &:hover {
+        background: var(--blue-400)
+    }
+}
+
+@mixin scrollbar-none {
+    scrollbar-width: none;
+	scrollbar-color: var(--color-gray-400) transparent;
+	
+	&::-webkit-scrollbar {
+        display: none;
+    }
+}
