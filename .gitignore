@@ -1,0 +1,9 @@
+\build
+node_modules
+nodemon.json
+backend/dist/*
+frontend/dist/*
+.env
+*.ovpn
+etc/keys
+.claude
