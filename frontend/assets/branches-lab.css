@@ -1,0 +1,543 @@
+:root {
+  color-scheme: dark;
+  --bg: #071116;
+  --bg-alt: #0c1b22;
+  --panel: rgba(10, 25, 31, 0.82);
+  --panel-border: rgba(83, 255, 214, 0.22);
+  --text: #e6fff8;
+  --muted: #98c7bb;
+  --cyan: #54f6d5;
+  --lime: #d6ff4d;
+  --amber: #ffb84d;
+  --danger: #ff7070;
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.36);
+  --grid-width: min(1180px, calc(100vw - 2rem));
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Bahnschrift", "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(84, 246, 213, 0.16), transparent 28%),
+    radial-gradient(circle at 80% 18%, rgba(214, 255, 77, 0.12), transparent 22%),
+    linear-gradient(160deg, #050c10 0%, #071116 48%, #0b171d 100%);
+  color: var(--text);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(84, 246, 213, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(84, 246, 213, 0.08) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent 85%);
+}
+
+code {
+  font-family: "Cascadia Mono", "Consolas", monospace;
+  color: var(--lime);
+}
+
+.page-shell {
+  position: relative;
+}
+
+.hero-band,
+.brief-band,
+.challenge-band,
+.final-band,
+.guide-band {
+  width: 100%;
+  padding: 2rem 0;
+}
+
+.hero-band,
+.brief-grid,
+.challenge-band > .section-heading,
+.challenge-grid,
+.final-band > .section-heading,
+.final-grid,
+.guide-band > .section-heading,
+.guide-stage {
+  width: var(--grid-width);
+  margin: 0 auto;
+}
+
+.hero-band {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+  gap: 1.5rem;
+  align-items: end;
+  padding-top: 3rem;
+}
+
+.eyebrow,
+.status-label,
+.guide-label,
+.card-index,
+.card-points {
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+.eyebrow,
+.status-label,
+.guide-label {
+  color: var(--cyan);
+  font-size: 0.82rem;
+  font-weight: 700;
+  margin: 0 0 0.8rem;
+}
+
+.hero-copy h1,
+.section-heading h2,
+.mission-complete h3 {
+  font-family: "Cascadia Mono", "Bahnschrift", monospace;
+  margin: 0;
+}
+
+.hero-copy h1 {
+  font-size: clamp(3.2rem, 8vw, 5.8rem);
+  line-height: 0.92;
+  text-transform: uppercase;
+  text-shadow: 0 0 24px rgba(84, 246, 213, 0.35);
+}
+
+.hero-text {
+  max-width: 52rem;
+  color: var(--muted);
+  margin: 1rem 0 0;
+  font-size: 1.06rem;
+  line-height: 1.7;
+}
+
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.2rem;
+}
+
+.hero-badges span,
+.terminal-note,
+.guide-path {
+  border: 1px solid rgba(84, 246, 213, 0.18);
+  background: rgba(8, 21, 27, 0.78);
+}
+
+.hero-badges span {
+  padding: 0.72rem 0.95rem;
+  border-radius: 999px;
+  color: var(--text);
+  font-size: 0.94rem;
+}
+
+.hero-status,
+.challenge-card,
+.final-form,
+.mission-complete,
+.guide-photo {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+}
+
+.hero-status {
+  padding: 1.35rem;
+  border-radius: 8px;
+}
+
+.status-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.85rem;
+}
+
+.status-row strong {
+  font-family: "Cascadia Mono", "Consolas", monospace;
+  color: var(--lime);
+  font-size: 1.05rem;
+}
+
+.status-key,
+.challenge-copy,
+.challenge-clue,
+.brief-copy p,
+.brief-list,
+.guide-photo small,
+.status-copy {
+  color: var(--muted);
+}
+
+.progress-rail {
+  width: 100%;
+  height: 0.7rem;
+  margin: 1rem 0 0.85rem;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--cyan), var(--lime));
+  box-shadow: 0 0 18px rgba(84, 246, 213, 0.48);
+  transition: width 180ms ease;
+}
+
+.status-copy {
+  min-height: 2.8rem;
+  margin: 0 0 1rem;
+  line-height: 1.5;
+}
+
+.section-heading {
+  margin-bottom: 1.25rem;
+}
+
+.section-heading h2 {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 1.05;
+}
+
+.brief-grid,
+.final-grid,
+.guide-stage {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.brief-grid {
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  align-items: center;
+}
+
+.brief-copy p {
+  margin-top: 0;
+  line-height: 1.7;
+}
+
+.brief-list {
+  margin: 1rem 0 0;
+  padding-left: 1.1rem;
+  line-height: 1.8;
+}
+
+.terminal-note {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 1rem 1.1rem;
+  border-radius: 8px;
+}
+
+.terminal-led {
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 999px;
+  background: var(--lime);
+  box-shadow: 0 0 18px rgba(214, 255, 77, 0.85);
+  flex: 0 0 auto;
+}
+
+.terminal-note p {
+  margin: 0;
+  line-height: 1.55;
+}
+
+.challenge-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.challenge-card,
+.guide-photo,
+.mission-complete {
+  border-radius: 8px;
+}
+
+.challenge-card {
+  padding: 1.2rem;
+  min-height: 100%;
+}
+
+.challenge-topline,
+.action-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.card-index {
+  margin: 0;
+  color: var(--cyan);
+  font-family: "Cascadia Mono", "Consolas", monospace;
+}
+
+.card-points {
+  color: var(--amber);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.challenge-card h3 {
+  margin: 1rem 0 0.55rem;
+  font-size: 1.25rem;
+}
+
+.challenge-copy,
+.challenge-clue,
+.feedback,
+.hint-copy {
+  line-height: 1.6;
+}
+
+.challenge-form,
+.final-form {
+  margin-top: 1rem;
+}
+
+.challenge-form input,
+.final-form input {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.85rem 1rem;
+  margin-bottom: 0.85rem;
+  border-radius: 8px;
+  border: 1px solid rgba(84, 246, 213, 0.24);
+  background: rgba(6, 14, 18, 0.88);
+  color: var(--text);
+  font: inherit;
+}
+
+.challenge-form input:focus,
+.final-form input:focus {
+  outline: 2px solid rgba(84, 246, 213, 0.55);
+  outline-offset: 1px;
+}
+
+.action-button,
+.ghost-button {
+  min-height: 2.8rem;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.72rem 1rem;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.action-button {
+  background: linear-gradient(135deg, var(--cyan), #2ec4ff);
+  color: #041015;
+}
+
+.ghost-button {
+  background: transparent;
+  border-color: rgba(84, 246, 213, 0.26);
+  color: var(--text);
+}
+
+.action-button:hover,
+.ghost-button:hover {
+  transform: translateY(-1px);
+}
+
+.hint-copy,
+.feedback {
+  margin: 0.7rem 0 0;
+  font-size: 0.96rem;
+}
+
+.hint-copy {
+  color: var(--lime);
+}
+
+.feedback[data-state="success"] {
+  color: var(--lime);
+}
+
+.feedback[data-state="error"] {
+  color: var(--danger);
+}
+
+.feedback[data-state="info"] {
+  color: var(--amber);
+}
+
+.challenge-card.is-solved,
+.mission-complete {
+  border-color: rgba(214, 255, 77, 0.34);
+}
+
+.challenge-card.is-solved::after {
+  content: "Solved";
+  display: inline-flex;
+  margin-top: 0.9rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(214, 255, 77, 0.12);
+  color: var(--lime);
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.final-grid {
+  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+  align-items: start;
+}
+
+.final-form {
+  padding: 1.2rem;
+  border-radius: 8px;
+}
+
+.mission-complete {
+  width: var(--grid-width);
+  margin: 1rem auto 0;
+  padding: 1.35rem;
+}
+
+.mission-complete h3 {
+  margin-top: 0;
+  font-size: 1.55rem;
+}
+
+.guide-stage {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.guide-photo {
+  position: relative;
+  padding: 1.1rem;
+  overflow: hidden;
+}
+
+.guide-photo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(transparent, rgba(255, 255, 255, 0.04)),
+    radial-gradient(circle at top right, rgba(84, 246, 213, 0.16), transparent 24%);
+  pointer-events: none;
+}
+
+.guide-path {
+  position: relative;
+  display: inline-flex;
+  padding: 0.45rem 0.7rem;
+  border-radius: 999px;
+  color: var(--text);
+  margin: 0 0 1rem;
+}
+
+.tree-list {
+  position: relative;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tree-list li {
+  display: grid;
+  grid-template-columns: minmax(120px, 170px) minmax(0, 1fr);
+  gap: 0.85rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.tree-list li:last-child {
+  border-bottom: 0;
+}
+
+.tree-list span {
+  font-family: "Cascadia Mono", "Consolas", monospace;
+  color: var(--text);
+  font-size: 0.92rem;
+}
+
+.tree-list small {
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 960px) {
+  .hero-band,
+  .brief-grid,
+  .final-grid,
+  .guide-stage {
+    grid-template-columns: 1fr;
+  }
+
+  .challenge-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-copy h1 {
+    max-width: 9ch;
+  }
+
+  .tree-list li {
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-band,
+  .brief-band,
+  .challenge-band,
+  .final-band,
+  .guide-band {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .action-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-badges {
+    gap: 0.55rem;
+  }
+
+  .hero-badges span {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+}

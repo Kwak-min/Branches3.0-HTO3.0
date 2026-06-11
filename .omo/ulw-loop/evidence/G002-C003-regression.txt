@@ -1,0 +1,16 @@
+﻿G002-C003 structure/doc regression evidence
+timestamp=2026-06-09T12:13:22.6138534+09:00
+README exists: True
+frontend docs iteration 1 exists: True
+frontend docs iteration 2 exists: True
+frontend docs iteration 3 exists: True
+frontend/dist exists: True
+backend/src exists: True
+git status --short:
+ M .gitignore
+?? .omo/
+?? frontend/assets/
+?? frontend/docs/branches-neon-lab-structure-guide.md
+?? frontend/index.html
+?? frontend/package.json
+cleanup: closed Playwright Chrome context; closed in-app tab where available; stopped Vite session 70012; no listeners on :5177

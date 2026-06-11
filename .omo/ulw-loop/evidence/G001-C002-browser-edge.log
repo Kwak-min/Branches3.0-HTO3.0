@@ -1,0 +1,25 @@
+opened http://127.0.0.1:5177/ title=BRANCHES Neon Lab
+requests=["http://127.0.0.1:5177/","http://127.0.0.1:5177/@vite/client","http://127.0.0.1:5177/assets/branches-lab.css","http://127.0.0.1:5177/assets/branches-lab.js","http://127.0.0.1:5177/node_modules/vite/dist/client/env.mjs"]
+externalRequests=[]
+locator #resetProgress count=1
+locator #node-1-input count=1
+locator [data-form-id=node-1] button[type=submit] count=1
+node-1 feedback=Node 01 solved. Neon call sign recovered.
+locator #node-2-input count=1
+locator [data-form-id=node-2] button[type=submit] count=1
+node-2 feedback=Node 02 solved. Relay sum confirmed.
+locator #node-3-input count=1
+locator [data-form-id=node-3] button[type=submit] count=1
+node-3 feedback=Node 03 solved. Privileged account identified.
+locator #node-4-input count=1
+locator [data-form-id=node-4] button[type=submit] count=1
+node-4 feedback=Node 04 solved. Platform tag verified.
+locator #finalAnswer count=1
+locator #finalForm button[type=submit] count=1
+happy state={"solved":"5 / 5","score":"1500","completeHidden":false,"finalFeedback":"Final flag accepted. Neon root signature confirmed."}
+reset state={"solved":"0 / 5","score":"0","nodeFeedbacks":["","","",""],"finalDisabled":true,"completeHidden":true}
+edge empty=Answer required. Enter a token before validating.
+edge malformed=Malformed answer. Use a single word with letters only.
+edge state={"solved":"0 / 5","score":"0","completeHidden":true,"nodeFeedback":"Malformed answer. Use a single word with letters only."}
+structure state={"guideTitle":"Current repo shape","frontend":true,"backend":true,"distBoundary":true,"noBackendChanges":true}
+cleanup: Playwright Chrome context closed in script; Vite session 41577 stopped; no LISTENING socket on :5177, only TIME_WAIT observed

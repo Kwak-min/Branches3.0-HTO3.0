@@ -1,0 +1,13 @@
+﻿G002-C002 doc-check evidence
+timestamp=2026-06-09T12:13:22.6028496+09:00
+hasIndex=True
+hasPackage=True
+hasCss=True
+hasJs=True
+notesMissingSrc=True
+notesDistUntouched=True
+notesBackendUnchanged=True
+hasBuildCommand=True
+hasStartCommand=True
+allChecksPass=True
+cleanup: closed Playwright Chrome context; closed in-app tab where available; stopped Vite session 70012; no listeners on :5177
