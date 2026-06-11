@@ -1,0 +1,17 @@
+﻿G001-C003 regression evidence
+timestamp=2026-06-09T12:13:22.4857619+09:00
+frontend build: npm --prefix frontend run build -> PASS (see terminal output; lab-dist output, frontend/dist preserved)
+backend install: npm --prefix backend ci -> PASS (412 packages installed; npm audit reports existing dependency vulnerabilities)
+backend build: npm --prefix backend run build -> PASS
+start script: npm --prefix frontend run start -> http://127.0.0.1:5177/
+HTTP status: 200
+frontend/dist/index.html exists: True
+backend/package.json exists: True
+git status --short:
+ M .gitignore
+?? .omo/
+?? frontend/assets/
+?? frontend/docs/branches-neon-lab-structure-guide.md
+?? frontend/index.html
+?? frontend/package.json
+cleanup: closed Playwright Chrome context; closed in-app tab where available; stopped Vite session 70012; no listeners on :5177

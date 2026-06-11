@@ -1,0 +1,112 @@
+{
+  "version": 1,
+  "createdAt": "2026-06-09T02:41:01.802Z",
+  "updatedAt": "2026-06-09T03:30:34.049Z",
+  "briefPath": ".omo/ulw-loop/019eaa36-d8fb-71c2-ba4c-ed7498fcf79a/brief.md",
+  "goalsPath": ".omo/ulw-loop/019eaa36-d8fb-71c2-ba4c-ed7498fcf79a/goals.json",
+  "ledgerPath": ".omo/ulw-loop/019eaa36-d8fb-71c2-ba4c-ed7498fcf79a/ledger.jsonl",
+  "codexGoalMode": "aggregate",
+  "goals": [
+    {
+      "id": "G001-github-clone-c-users-a-documents-git",
+      "title": "사용자 요청: GitHub clone 폴더 C:\\Users\\A\\Documents\\Github Clone 파일\\Branches...",
+      "objective": "사용자 요청: GitHub clone 폴더 C:\\Users\\A\\Documents\\Github Clone 파일\\Branches3.0-HTO3.0 에서 HTO/Branches 3.0 프로젝트를 읽고, 기본 기능은 유지하면서 HackTheBox와 비슷한 학습형 해킹 챌린지 게임 흐름으로 개선한다. 단, HackTheBox를 그대로 복제하지 말고 방식과 프론트엔드는 참고하되 독자적인 네온/사이버 학습 UI로 만든다. 사용자가 공부할 수 있게 문제를 제시하고, 마지막에 문제를 풀면 완료/성공 흐름이 가능하게 한다. 변경한 내용을 알려주고, 첨부 이미지처럼 프론트엔드/백엔드 구조와 수정 내용을 정리한다. 제약: 기존 코드와 기본 구조를 먼저 분석한다. 안전한 교육용 챌린지만 만든다. 실제 공격 대상/실서비스 침해 기능은 만들지 않는다. 프론트엔드는 네온 사인 분위기를 살리되 HackTheBox와 동일한 브랜딩/카피/디자인 복제는 피한다. 구현 후 실행 가능한 검증과 브라우저 QA 증거를 남긴다.",
+      "status": "complete",
+      "successCriteria": [
+        {
+          "id": "C001",
+          "scenario": "Browser use: start the frontend dev server from frontend with npm run start, open http://127.0.0.1:<port>/, select the final challenge, enter the correct flag BRANCHES{NEON_ROOT}, and observe the mission-complete panel with score/progress changed.",
+          "userModel": "happy",
+          "expectedEvidence": ".omo/ulw-loop/evidence/G001-C001-browser-happy.png plus action log showing correct submission and cleanup receipt.",
+          "capturedEvidence": ".omo/ulw-loop/evidence/G001-C001-browser-happy.png and .log: browser QA accepted BRANCHES{NEON_ROOT}, solved 5 / 5, score 1500, mission-complete visible | cleanup: closed Playwright Chrome context; closed in-app tab where available; stopped Vite session 70012; no listeners on :5177",
+          "status": "pass",
+          "capturedAt": "2026-06-09T03:14:39.744Z"
+        },
+        {
+          "id": "C002",
+          "scenario": "Browser use: open the lab page, submit an empty answer and then a malformed answer such as HTB{copycat}; observe accessible feedback that no completion is awarded and hints remain educational/safe.",
+          "userModel": "edge",
+          "expectedEvidence": ".omo/ulw-loop/evidence/G001-C002-browser-edge.png plus action log showing no completion for empty/malformed submissions and cleanup receipt.",
+          "capturedEvidence": ".omo/ulw-loop/evidence/G001-C002-browser-edge.png and .log: empty input produced Answer required, HTB{copycat} produced Malformed, solved stayed 0 / 5 and score 0 | cleanup: closed Playwright Chrome context; closed in-app tab where available; stopped Vite session 70012; no listeners on :5177",
+          "status": "pass",
+          "capturedAt": "2026-06-09T03:14:39.813Z"
+        },
+        {
+          "id": "C003",
+          "scenario": "Command + browser regression: verify existing frontend/dist/index.html remains present and unchanged in role, backend TypeScript build still passes, and the new frontend start script serves without deleting the old built app.",
+          "userModel": "regression",
+          "expectedEvidence": ".omo/ulw-loop/evidence/G001-C003-regression.txt containing command output, file existence checks, and cleanup receipt.",
+          "capturedEvidence": ".omo/ulw-loop/evidence/G001-C003-regression.txt: frontend build PASS, backend npm ci + build PASS, start script HTTP 200, existing frontend/dist/index.html and backend/package.json present | cleanup: closed Playwright Chrome context; closed in-app tab where available; stopped Vite session 70012; no listeners on :5177",
+          "status": "pass",
+          "capturedAt": "2026-06-09T03:14:39.887Z"
+        }
+      ],
+      "attempt": 1,
+      "createdAt": "2026-06-09T02:41:01.802Z",
+      "updatedAt": "2026-06-09T03:15:46.887Z",
+      "startedAt": "2026-06-09T02:47:52.713Z",
+      "completedAt": "2026-06-09T03:15:46.887Z",
+      "evidence": "C001-C003 all pass: browser happy/edge screenshots and regression command evidence captured with cleanup receipts."
+    },
+    {
+      "id": "G002",
+      "title": "사진형 구조 정리와 변경 요약",
+      "objective": "Create a concise structure/change guide, modeled after the user's reference image, that documents the frontend/backend folder structure, the added Neon Lab files, how to run it, and what was intentionally left unchanged.",
+      "status": "complete",
+      "successCriteria": [
+        {
+          "id": "C001",
+          "scenario": "Browser use: open the lab page and verify it contains a structure guide section with frontend/backend columns, added files, run command, and unchanged dist/backend boundaries.",
+          "userModel": "happy",
+          "expectedEvidence": ".omo/ulw-loop/evidence/G002-C001-browser-structure.png plus action log and cleanup receipt.",
+          "capturedEvidence": ".omo/ulw-loop/evidence/G002-C001-browser-structure.png and .log: browser QA found Current repo shape guide, frontend/backend columns, dist boundary, and unchanged backend note | cleanup: closed Playwright Chrome context; closed in-app tab where available; stopped Vite session 70012; no listeners on :5177",
+          "status": "pass",
+          "capturedAt": "2026-06-09T03:16:16.775Z"
+        },
+        {
+          "id": "C002",
+          "scenario": "Command/data check: parse the markdown guide and verify it references the actual added files, frontend/backend structure, and safe-run instructions without claiming backend changes that were not made.",
+          "userModel": "edge",
+          "expectedEvidence": ".omo/ulw-loop/evidence/G002-C002-doc-check.txt containing parsed checks and cleanup receipt.",
+          "capturedEvidence": ".omo/ulw-loop/evidence/G002-C002-doc-check.txt: markdown guide references added files, missing frontend/src, preserved frontend/dist, unchanged backend, and build/start commands; allChecksPass=True | cleanup: closed Playwright Chrome context; closed in-app tab where available; stopped Vite session 70012; no listeners on :5177",
+          "status": "pass",
+          "capturedAt": "2026-06-09T03:16:16.843Z"
+        },
+        {
+          "id": "C003",
+          "scenario": "Command regression: run git status --short and a file existence check to prove the guide/doc additions did not remove existing README, frontend/docs iteration notes, frontend/dist, or backend files.",
+          "userModel": "regression",
+          "expectedEvidence": ".omo/ulw-loop/evidence/G002-C003-regression.txt containing status and file existence checks plus cleanup receipt.",
+          "capturedEvidence": ".omo/ulw-loop/evidence/G002-C003-regression.txt: README, old problem-bank docs, frontend/dist, and backend/src still exist; git status shows only intended additions/modifications | cleanup: closed Playwright Chrome context; closed in-app tab where available; stopped Vite session 70012; no listeners on :5177",
+          "status": "pass",
+          "capturedAt": "2026-06-09T03:16:16.911Z"
+        }
+      ],
+      "attempt": 1,
+      "createdAt": "2026-06-09T02:45:47.607Z",
+      "updatedAt": "2026-06-09T03:30:34.049Z",
+      "startedAt": "2026-06-09T03:16:01.854Z",
+      "completedAt": "2026-06-09T03:30:34.049Z",
+      "evidence": "G002 complete: structure/change guide is implemented in frontend docs and visible in the lab UI; .omo/ulw-loop/019eaa36-d8fb-71c2-ba4c-ed7498fcf79a/goals.json and ledger.jsonl record 6/6 criteria PASS; validation commands passed; Playwright happy/edge/structure QA passed; final reviewer approved with architectStatus CLEAR."
+    }
+  ],
+  "codexObjective": "Complete the durable ulw-loop plan in .omo/ulw-loop/019eaa36-d8fb-71c2-ba4c-ed7498fcf79a/goals.json, including later accepted/appended stories, under the original brief constraints; use .omo/ulw-loop/019eaa36-d8fb-71c2-ba4c-ed7498fcf79a/ledger.jsonl as the audit trail.",
+  "aggregateCompletion": {
+    "status": "complete",
+    "completedAt": "2026-06-09T03:30:34.049Z",
+    "evidence": "G002 complete: structure/change guide is implemented in frontend docs and visible in the lab UI; .omo/ulw-loop/019eaa36-d8fb-71c2-ba4c-ed7498fcf79a/goals.json and ledger.jsonl record 6/6 criteria PASS; validation commands passed; Playwright happy/edge/structure QA passed; final reviewer approved with architectStatus CLEAR.",
+    "codexGoal": {
+      "goal": {
+        "threadId": "019eaa36-d8fb-71c2-ba4c-ed7498fcf79a",
+        "objective": "Complete the durable ulw-loop plan in .omo/ulw-loop/019eaa36-d8fb-71c2-ba4c-ed7498fcf79a/goals.json, including later accepted/appended stories, under the original brief constraints; use .omo/ulw-loop/019eaa36-d8fb-71c2-ba4c-ed7498fcf79a/ledger.jsonl as the audit trail.",
+        "status": "complete",
+        "tokensUsed": 348436,
+        "timeUsedSeconds": 2507,
+        "createdAt": 1780973283,
+        "updatedAt": 1780975791
+      },
+      "remainingTokens": null,
+      "completionBudgetReport": "Goal achieved. Report final usage from this tool result structured goal fields."
+    }
+  }
+}

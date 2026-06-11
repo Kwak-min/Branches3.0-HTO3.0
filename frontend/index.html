@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BRANCHES Neon Lab</title>
+    <meta
+      name="description"
+      content="A standalone local-only BRANCHES Neon Lab with guided educational challenges and repo structure notes."
+    />
+    <link rel="stylesheet" href="./assets/branches-lab.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero-band">
+        <div class="hero-copy">
+          <p class="eyebrow">BRANCHES / HTO local-only simulation</p>
+          <h1>Neon Lab</h1>
+          <p class="hero-text">
+            A cyber-range style walkthrough built as a standalone frontend page. Solve four lightweight signals,
+            assemble the root clue, and finish the mission with the final flag.
+          </p>
+          <div class="hero-badges" aria-label="Lab attributes">
+            <span>Educational</span>
+            <span>Offline-friendly</span>
+            <span>No backend changes</span>
+          </div>
+        </div>
+
+        <aside class="hero-status" aria-labelledby="mission-status-title">
+          <p id="mission-status-title" class="status-label">Mission Status</p>
+          <div class="status-row">
+            <span class="status-key">Solved</span>
+            <strong id="solvedCount">0 / 5</strong>
+          </div>
+          <div class="status-row">
+            <span class="status-key">Score</span>
+            <strong id="scoreCount">0</strong>
+          </div>
+          <div class="progress-rail" aria-hidden="true">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <p id="missionPulse" class="status-copy">Awaiting first branch signal.</p>
+          <button type="button" id="resetProgress" class="ghost-button">Reset mission state</button>
+        </aside>
+      </header>
+
+      <main>
+        <section class="brief-band">
+          <div class="section-heading">
+            <p class="eyebrow">Mission brief</p>
+            <h2>Recover the root signature</h2>
+          </div>
+          <div class="brief-grid">
+            <div class="brief-copy">
+              <p>
+                Every solved node unlocks part of the narrative and awards points. Hints stay optional, answers are
+                checked in the browser only, and the final flag requires the exact format
+                <code>BRANCHES{NEON_ROOT}</code>.
+              </p>
+              <ul class="brief-list">
+                <li>Each node accepts a short token.</li>
+                <li>Empty submissions and malformed formats produce distinct feedback.</li>
+                <li>The final terminal unlocks after all four nodes are solved.</li>
+              </ul>
+            </div>
+            <div class="terminal-note" aria-label="Local-only note">
+              <span class="terminal-led"></span>
+              <p>Browser-side state only. No network calls. No persistence beyond localStorage.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="challenge-band" aria-labelledby="challenge-title">
+          <div class="section-heading">
+            <p class="eyebrow">Field nodes</p>
+            <h2 id="challenge-title">Signal challenges</h2>
+          </div>
+          <div class="challenge-grid" id="challengeGrid">
+            <article class="challenge-card" data-challenge-id="node-1">
+              <div class="challenge-topline">
+                <p class="card-index">01</p>
+                <span class="card-points">250 pts</span>
+              </div>
+              <h3>Node 01: Shifted Banner</h3>
+              <p class="challenge-copy">
+                The access banner was rotated three letters forward. Decode <code>QHRQ</code> to recover the neon call
+                sign.
+              </p>
+              <p class="challenge-clue">Expected answer: one uppercase word.</p>
+              <form class="challenge-form" data-form-id="node-1">
+                <label class="sr-only" for="node-1-input">Node 01 answer</label>
+                <input id="node-1-input" name="answer" autocomplete="off" placeholder="Enter token" />
+                <div class="action-row">
+                  <button type="submit" class="action-button">Validate</button>
+                  <button type="button" class="ghost-button hint-toggle" data-hint-id="node-1">Reveal hint</button>
+                </div>
+              </form>
+              <p class="hint-copy" id="node-1-hint" hidden>Reverse a Caesar shift of 3 to turn the letters back.</p>
+              <p class="feedback" id="node-1-feedback" aria-live="polite"></p>
+            </article>
+
+            <article class="challenge-card" data-challenge-id="node-2">
+              <div class="challenge-topline">
+                <p class="card-index">02</p>
+                <span class="card-points">250 pts</span>
+              </div>
+              <h3>Node 02: Port Sum</h3>
+              <p class="challenge-copy">
+                Three monitoring ports were tagged as active: <code>7</code>, <code>14</code>, and <code>21</code>.
+                Add them to recover the relay token.
+              </p>
+              <p class="challenge-clue">Expected answer: digits only.</p>
+              <form class="challenge-form" data-form-id="node-2">
+                <label class="sr-only" for="node-2-input">Node 02 answer</label>
+                <input id="node-2-input" name="answer" autocomplete="off" placeholder="Enter token" />
+                <div class="action-row">
+                  <button type="submit" class="action-button">Validate</button>
+                  <button type="button" class="ghost-button hint-toggle" data-hint-id="node-2">Reveal hint</button>
+                </div>
+              </form>
+              <p class="hint-copy" id="node-2-hint" hidden>Add all three values together without separators.</p>
+              <p class="feedback" id="node-2-feedback" aria-live="polite"></p>
+            </article>
+
+            <article class="challenge-card" data-challenge-id="node-3">
+              <div class="challenge-topline">
+                <p class="card-index">03</p>
+                <span class="card-points">250 pts</span>
+              </div>
+              <h3>Node 03: Username Trace</h3>
+              <p class="challenge-copy">
+                The incident log repeated this fragment: <code>guest - analyst - root - observer</code>. Recover the
+                only account with full control.
+              </p>
+              <p class="challenge-clue">Expected answer: one uppercase word.</p>
+              <form class="challenge-form" data-form-id="node-3">
+                <label class="sr-only" for="node-3-input">Node 03 answer</label>
+                <input id="node-3-input" name="answer" autocomplete="off" placeholder="Enter token" />
+                <div class="action-row">
+                  <button type="submit" class="action-button">Validate</button>
+                  <button type="button" class="ghost-button hint-toggle" data-hint-id="node-3">Reveal hint</button>
+                </div>
+              </form>
+              <p class="hint-copy" id="node-3-hint" hidden>The privileged account is explicitly named in the log.</p>
+              <p class="feedback" id="node-3-feedback" aria-live="polite"></p>
+            </article>
+
+            <article class="challenge-card" data-challenge-id="node-4">
+              <div class="challenge-topline">
+                <p class="card-index">04</p>
+                <span class="card-points">250 pts</span>
+              </div>
+              <h3>Node 04: Branch Tag</h3>
+              <p class="challenge-copy">
+                The repository shorthand appears in every mission note. Submit the platform name used throughout this
+                lab.
+              </p>
+              <p class="challenge-clue">Expected answer: one uppercase word.</p>
+              <form class="challenge-form" data-form-id="node-4">
+                <label class="sr-only" for="node-4-input">Node 04 answer</label>
+                <input id="node-4-input" name="answer" autocomplete="off" placeholder="Enter token" />
+                <div class="action-row">
+                  <button type="submit" class="action-button">Validate</button>
+                  <button type="button" class="ghost-button hint-toggle" data-hint-id="node-4">Reveal hint</button>
+                </div>
+              </form>
+              <p class="hint-copy" id="node-4-hint" hidden>The answer is the same word used in the page title.</p>
+              <p class="feedback" id="node-4-feedback" aria-live="polite"></p>
+            </article>
+          </div>
+        </section>
+
+        <section class="final-band" aria-labelledby="final-title">
+          <div class="section-heading">
+            <p class="eyebrow">Final terminal</p>
+            <h2 id="final-title">Submit the root flag</h2>
+          </div>
+          <div class="final-grid">
+            <div class="final-copy">
+              <p>
+                Combine the neon call sign with the privileged account and lock the answer into the BRANCHES flag
+                wrapper.
+              </p>
+              <p class="challenge-clue">
+                Required final answer: <code>BRANCHES{NEON_ROOT}</code>
+              </p>
+            </div>
+            <form class="final-form" id="finalForm">
+              <label class="sr-only" for="finalAnswer">Final flag</label>
+              <input id="finalAnswer" name="finalAnswer" autocomplete="off" placeholder="BRANCHES{...}" />
+              <div class="action-row">
+                <button type="submit" class="action-button">Submit flag</button>
+                <button type="button" class="ghost-button hint-toggle" data-hint-id="final">Reveal hint</button>
+              </div>
+              <p class="hint-copy" id="final-hint" hidden>Pair the answer from Node 01 with the answer from Node 03.</p>
+              <p class="feedback" id="final-feedback" aria-live="polite"></p>
+            </form>
+          </div>
+          <div class="mission-complete" id="missionComplete" hidden>
+            <p class="eyebrow">Mission complete</p>
+            <h3>Root signature recovered</h3>
+            <p>
+              You completed all four nodes and validated the final flag. This frontend remains isolated, educational,
+              and ready to ship beside the existing backend and bundled `dist`.
+            </p>
+          </div>
+        </section>
+
+        <section class="guide-band" aria-labelledby="guide-title">
+          <div class="section-heading">
+            <p class="eyebrow">Structure guide</p>
+            <h2 id="guide-title">Current repo shape</h2>
+          </div>
+          <div class="guide-stage">
+            <div class="guide-column">
+              <p class="guide-label">Frontend</p>
+              <div class="guide-photo">
+                <p class="guide-path">frontend/</p>
+                <ul class="tree-list">
+                  <li><span>dist/</span><small>existing bundled app kept untouched</small></li>
+                  <li><span>docs/</span><small>existing notes plus this structure guide</small></li>
+                  <li><span>node_modules/</span><small>already present in the repo snapshot</small></li>
+                  <li><span>src/</span><small>missing in current checkout</small></li>
+                  <li><span>index.html</span><small>new standalone neon lab entrypoint</small></li>
+                  <li><span>package.json</span><small>new minimal Vite scripts for lab-only build/dev</small></li>
+                  <li><span>assets/branches-lab.css</span><small>new visual system and layout</small></li>
+                  <li><span>assets/branches-lab.js</span><small>new challenge logic and local state</small></li>
+                </ul>
+              </div>
+            </div>
+            <div class="guide-column">
+              <p class="guide-label">Backend</p>
+              <div class="guide-photo">
+                <p class="guide-path">backend/</p>
+                <ul class="tree-list">
+                  <li><span>src/</span><small>existing server source kept unchanged</small></li>
+                  <li><span>uploads/</span><small>existing runtime storage kept unchanged</small></li>
+                  <li><span>package.json</span><small>existing server package confirmed present</small></li>
+                  <li><span>package-lock.json</span><small>left untouched</small></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="./assets/branches-lab.js"></script>
+  </body>
+</html>

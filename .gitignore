@@ -3,6 +3,7 @@ node_modules
 nodemon.json
 backend/dist/*
 frontend/dist/*
+frontend/lab-dist/*
 .env
 *.ovpn
 etc/keys
