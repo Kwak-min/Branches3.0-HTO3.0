@@ -1,0 +1,28 @@
+Task 1 : http://admin:password@inlanefreight.com:80/dashboard.php?login=true#status / 이 주소에서 host는 어떤 부분일까요?
+    정답 :inlanefreight.com
+Task 2 : http://admin:password@inlanefreight.com:80/dashboard.php?login=true#status / 이 주소에서 port는 어떤 부분일까요?
+    정답 : 80
+Task 3 : http://admin:password@inlanefreight.com:80/dashboard.php?login=true#status / 이 주소에서 path는 어떤 부분일까요?
+    정답 : dashboard.php?login=true#status
+Task 4 : http://admin:password@inlanefreight.com:80/dashboard.php?login=true#status / 이 주소에서 fragement는 어떤 부분일까요?
+    정답 : status
+Task 5 : 클라이언트 측의 브라우저에서 처리되며, 기본 리소스 내의 특정 위치(예: 웹페이지 내의 특정 헤더나 섹션)를 바로 찾아가는 데 사용되는 것은?
+    정답 : Fragements
+Task 6 : 호스트는 리소스의 위치를 나타냅니다. 호스트 이름이나 IP 주소인 것은?
+    정답 : Host
+Task 7 : 클라이언트가 접근하려는 프로토콜을 식별하는 데 사용되며, 콜론과 두 개의 슬래시(://)로 끝나는 것은?
+    정답 : Scheme
+Task 8 : 시스템에 연결된 PCI 버스 및 장치의 목록을 보여주는 것은?
+    정답 : lspci
+Task 9 : 현재 실행 중인 프로세스의 상태를 보여주는 것은?
+    정답 : ps
+Task 10 : 하드 드라이브나 플래시 드라이브와 같은 블록 장치의 목록을 보여주는 것은?
+    정답 : lsblk
+
+AWS TASK : 웹 서비스를 운영하기 위해 AWS에 가상 네트워크 환경을 구축하고 있습니다. 
+외부 인터넷에서 직접 접근할 수 없어야 하며 해킹의 위험으로부터 안전하게 보호해야 하는 데이터베이스 서버를 배치하려고
+하면 서버는 어떤 네트워크 공간에 두어야 할까요?
+    구동 방식 : Amazon VPC
+    정답 : Private Subnet
+
+출처 : Hack the box
