@@ -1,0 +1,60 @@
+Task 1 :
+    최초의 의심스러운 이벤트가 발생한 정확한 UTC 시각은 언제인가?
+
+    정답 :
+    2026-06-18T03:17:08Z
+
+Task 2 :
+    의심스러운 요청의 출발지 IP 주소는 무엇인가?
+
+    정답 :
+    198.51.100.77
+
+Task 3 :
+    사건 초기에 사용된 IAM principal 이름은 무엇인가?
+
+    정답 :
+    ci-reader
+
+Task 4 :
+    공격자가 S3 환경을 탐색하기 위해 호출한 API는 무엇인가?
+
+    정답 :
+    ListBuckets
+
+Task 5 :
+    ci-reader가 전환한 IAM 역할의 이름은 무엇인가?
+
+    정답 :
+    AuditExportRole
+
+Task 6 :
+    AssumeRole 요청에 사용된 역할 세션 이름은 무엇인가?
+
+    정답 :
+    night-audit
+
+Task 7 :
+    AssumeRole 이벤트에 기록된 sourceIdentity는 무엇인가?
+
+    정답 :
+    ci-job-42
+
+Task 8 :
+    접근 대상이 된 S3 버킷 이름은 무엇인가?
+
+    정답 :
+    acme-audit-logs
+
+Task 9 :
+    조회된 재무 파일의 전체 S3 경로는 무엇인가?
+
+    정답 :
+    s3://acme-audit-logs/finance/2026-Q2.csv
+
+Task 10 :
+    추가 자격증명을 만들어 접근을 유지하려 한 API와 최종 flag는 무엇인가?
+
+    정답 :
+    API: CreateAccessKey
+    Flag: HTB{ci-reader_AuditExportRole_CreateAccessKey}
