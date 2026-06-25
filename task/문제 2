@@ -1,0 +1,117 @@
+Task 1 : Router1의 FastEthernet 0/0 인터페이스의 IP를 192.168.0.100/24로 설정하고 활성화한 뒤 startup-config에 저장하시오.
+    정답 : 
+    Router1:enable
+    configure terminal
+    interface fastethernet 0/0
+    ip address 192.168.0.100 255.255.255.0
+    no shutdown
+    exit
+    exit
+    write
+
+Task 2 : Router1의 Serial 2/0 인터페이스의 IP를 사설 대역인 10.10.10.1/30으로 설정하고 가동시킨 후 최종 저장을 완료하시오.
+    정답 : 
+    Router1:enable
+    configure terminal
+    interface serial 2/0
+    ip address 10.10.10.1 255.255.255.252
+    no shutdown
+    exit
+    exit
+    write
+
+Task 3 : Router2의 FastEthernet 0/1 인터페이스의 IP를 192.168.10.1/24로 할당하고, 포트를 활성화한 후 NVRAM에 설정을 영구 저장하시오.
+    정답 : 
+    Router2:enable
+    configure terminal
+    interface fastethernet 0/1
+    ip address 192.168.10.1 255.255.255.0
+    no shutdown
+    exit
+    exit
+    write
+
+Task 4 : Router2의 Serial 2/1 인터페이스의 IP 주소를 10.10.10.2/30으로 세팅하고 활성화 링크를 켠 뒤, startup-config에 저장하시오.
+    정답 : 
+    Router2:enable
+    configure terminal
+    interface serial 2/1
+    ip address 10.10.10.2 255.255.255.252
+    no shutdown
+    exit
+    exit
+    write
+
+Task 5 : Router3의 FastEthernet 0/0 인터페이스의 IP를 B클래스 공인 대역인 172.16.100.254/16으로 설정 및 가동하고 최종 설정을 NVRAM에 백업하시오.
+    정답 : 
+    Router3:enable
+    configure terminal
+    interface fastethernet 0/0
+    ip address 172.16.100.254 255.255.0.0
+    no shutdown
+    exit
+    exit
+    write
+
+Task 6 : Router3의 FastEthernet 0/1 인터페이스 IP를 서브넷 마스크 26비트 대역인 192.168.50.1/26으로 설정하고 포트를 가동한 뒤 최종 저장하시오.
+    정답 : 
+    Router3:enable
+    configure terminal
+    interface fastethernet 0/1
+    ip address 192.168.50.1 255.255.255.192
+    no shutdown
+    exit
+    exit
+    write
+
+Task 7 : Router4의 FastEthernet 0/0 인터페이스 IP를 서브넷 마스크 28비트 대역인 192.168.200.14/28로 구성 및 활성화하고, 완료된 설정을 startup-config에 동기화하시오.
+    정답 : 
+    Router4:enable
+    configure terminal
+    interface fastethernet 0/0
+    ip address 192.168.200.14 255.255.255.240
+    no shutdown
+    exit
+    exit
+    write
+
+Task 8 : Router4의 Serial 3/0 인터페이스 주소를 10.20.20.1/30으로 세팅하여 가동하고, 전원이 꺼져도 유지되도록 라우터 설정을 백업 저장하시오.
+    정답 : 
+    Router4:enable
+    configure terminal
+    interface serial 3/0
+    ip address 10.20.20.1 255.255.255.252
+    no shutdown
+    exit
+    exit
+    write
+
+Task 9 : Router1의 FastEthernet 0/1 인터페이스 IP 주소를 C클래스 가용한 마지막 주소 대역인 192.168.1.254/24로 할당하고 가동 후 메모리에 영구 커밋하시오.
+    정답 : 
+    Router1:enable
+    configure terminal
+    interface fastethernet 0/1
+    ip address 192.168.1.254 255.255.255.0
+    no shutdown
+    exit
+    exit
+    write
+
+Task 10 : Router2의 FastEthernet 0/0 인터페이스 IP 주소를 A클래스 사설 대역인 10.0.0.1/8 기본 마스크로 설정하여 링크를 가동하고, 최종 상태를 startup-config에 안전하게 저장하시오.
+    정답 : 
+    Router2:enable
+    configure terminal
+    interface fastethernet 0/0
+    ip address 10.0.0.1 255.0.0.0
+    no shutdown
+    exit
+    exit
+    write
+
+AWS TASK :
+    구동 방식 :구동 방식 : 유저가 토폴로지 맵(Router1~Router4) 분기를 오가며 enable 모드 진입, interface IP 할당, no shutdown 활성화를 순차적으로 수행하고, 
+    최종적으로 write(또는 copy running-config startup-config) 명령어를 커밋하는 순간 가동. 
+    백엔드 엔진은 사용자가 입력한 명령어 시퀀스 전체가 라우팅 빌드업에 맞게 성공했는지 검증한 뒤, AWS CloudFormation 또는 AWS SDK를 트리거하여 가상 라우터 인스턴스의 NVRAM 상태(Startup Configuration)를 영구 플러시(Flush) 처리하고 커밋하는 방식으로 동형 구동.
+    정답 : SUCCESS_ROUTER_PROCESS_COMPLETED
+
+출처 : 네트워크 관리사 2급 실기 라우터/네트워크 설정 에뮬레이터 기출 유형
